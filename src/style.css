@@ -1,0 +1,82 @@
+/* ===== Global Reset & Variables ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --q1: #ff6b6b; --q1-light: #fff5f5; --q1-border: #ffd0d0;
+  --q2: #26de81; --q2-light: #f0fff8; --q2-border: #b2f0d4;
+  --q3: #fd9644; --q3-light: #fff8f0; --q3-border: #ffd8b0;
+  --q4: #a29bfe; --q4-light: #f8f7ff; --q4-border: #d8d4fe;
+  --bg: #f7f5ff;
+  --surface: #ffffff;
+  --surface2: #fafafa;
+  --border: #ebebeb;
+  --text: #2d2d2d;
+  --text2: #666;
+  --text3: #aaa;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 2px 16px rgba(0,0,0,0.07);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --accent: #7c3aed;
+  --accent-light: #ede9fe;
+  /* 安全区 */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  /* 防止 iOS 橡皮筋 */
+  overscroll-behavior: none;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  /* 防止 iOS 长按选中 */
+  -webkit-touch-callout: none;
+}
+#app { height: 100%; display: flex; flex-direction: column; }
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #ddd; border-radius: 4px; }
+
+/* ===== Transitions ===== */
+.fade-enter-active, .fade-leave-active { transition: opacity .2s; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
+
+.slide-up-enter-active, .slide-up-leave-active { transition: all .25s cubic-bezier(.4,0,.2,1); }
+.slide-up-enter-from, .slide-up-leave-to { opacity: 0; transform: translateY(12px); }
+
+.slide-right-enter-active, .slide-right-leave-active { transition: all .3s cubic-bezier(.4,0,.2,1); }
+.slide-right-enter-from, .slide-right-leave-to { opacity: 0; transform: translateX(100%); }
+
+/* ===== Utility ===== */
+button { cursor: pointer; border: none; background: none; font-family: inherit; font-size: inherit; }
+input, textarea { font-family: inherit; outline: none; }
+
+/* ===== 移动端全局优化 ===== */
+@media (max-width: 767px) {
+  /* 点击区域放大 */
+  button { min-height: 32px; }
+
+  /* 防止双击缩放 */
+  button, a, input { touch-action: manipulation; }
+
+  /* 表单输入框防止缩放 */
+  input, textarea, select { font-size: 16px !important; }
+}
+
+/* ===== PWA 全屏模式 ===== */
+@media (display-mode: standalone) {
+  body { background: var(--bg); }
+  /* standalone 下状态栏补丁 */
+  .mobile-topbar {
+    padding-top: calc(env(safe-area-inset-top, 0px) + 0px) !important;
+    height: calc(50px + env(safe-area-inset-top, 0px)) !important;
+  }
+}

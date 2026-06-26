@@ -1,0 +1,36 @@
+{
+  "schema": "cowork-project/v1",
+  "id": "cw_proj_1fee7d04-33b",
+  "name": "task-matrix",
+  "srcDir": "/home/node/.openclaw/workspace/code/task-matrix",
+  "createdAt": 1782464053823,
+  "updatedAt": 1782465733245,
+  "createdBy": "seal-agent",
+  "stack": "pure-spa-vite",
+  "guardCompliant": true,
+  "pack": {
+    "keep": [
+      "dist"
+    ]
+  },
+  "devConfig": {
+    "preStart": [
+      "test -d node_modules/vite || NODE_ENV=development npm install --silent --include=dev --registry=http://registry.npmmirror.com"
+    ],
+    "run": "npm run dev -- --host 0.0.0.0 --port ${PORT}"
+  },
+  "cowork": {
+    "workId": 57361,
+    "appId": "2944927c",
+    "alias": "task-matrix",
+    "accessUrl": "https://cowork.xiaohongshu.com/s/task-matrix",
+    "coworkAppUrl": "https://cowork.xiaohongshu.com/app/NWEzYzhlM2M",
+    "deploymentId": 8348,
+    "deploymentStatus": "RUNNING",
+    "publishedAt": 1782465733245,
+    "visibility": "SELF_ONLY",
+    "rawAccessUrl": "https://cowork.xiaohongshu.com/s/2944927c/",
+    "version": "1.2.1",
+    "lastZipHash": "sha256:9c97eebaa08f008d780d68df5bf482dc47a32d02ea587a89ec71938c5179d11e"
+  }
+}
